@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot IA — HR Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% include 'partials/navbar.html' %}
+
+    <main>
+        <div class="page-header">
+            <h1>💬 Chatbot IA</h1>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="messages">
+                <div class="message bot">
+                    <div class="bubble">
+                        Hola! Soy tu asistente de RRHH. Podés preguntarme sobre empleados, salarios, departamentos o vacaciones. 😊
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Ej: ¿Cuántos empleados hay en Tecnología?" />
+                <button onclick="sendMessage()" id="sendBtn">Enviar</button>
+            </div>
+
+            <div class="chat-suggestions">
+                <span>Probá preguntar:</span>
+                <button onclick="ask('¿Cuántos empleados hay en total?')">¿Cuántos empleados hay?</button>
+                <button onclick="ask('¿Quién tiene el salario más alto?')">¿Quién gana más?</button>
+                <button onclick="ask('¿Qué vacaciones están pendientes?')">Vacaciones pendientes</button>
+                <button onclick="ask('¿Cuántos empleados hay en Tecnología?')">Empleados en Tecnología</button>
+            </div>
+        </div>
+    </main>
+
+    {% include 'partials/footer.html' %}
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

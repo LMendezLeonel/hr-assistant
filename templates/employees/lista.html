@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleados — HR Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% include 'partials/navbar.html' %}
+
+    <main>
+        <div class="page-header">
+            <h1>Empleados</h1>
+            <a href="/employees/alta" class="btn">+ Agregar empleado</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Cargo</th>
+                    <th>Departamento</th>
+                    <th>Salario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                <tr>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.email }}</td>
+                    <td>{{ emp.position }}</td>
+                    <td>{{ emp.department }}</td>
+                    <td>${{ "{:,.0f}".format(emp.salary) }}</td>
+                    <td>
+                        <a href="/employees/modificacion/{{ emp.id }}" class="btn-sm btn-edit">Editar</a>
+                        <a href="/employees/baja/{{ emp.id }}" class="btn-sm btn-delete">Dar de baja</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    {% include 'partials/footer.html' %}
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Empleado — HR Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    {% include 'partials/navbar.html' %}
+
+    <main>
+        <div class="page-header">
+            <h1>Modificar Empleado</h1>
+            <a href="/employees" class="btn">← Volver</a>
+        </div>
+
+        <div class="form-container">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Nombre completo</label>
+                    <input type="text" name="name" required value="{{ employee.name }}">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required value="{{ employee.email }}">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" name="phone" value="{{ employee.phone }}">
+                </div>
+                <div class="form-group">
+                    <label>Cargo</label>
+                    <input type="text" name="position" required value="{{ employee.position }}">
+                </div>
+                <div class="form-group">
+                    <label>Salario</label>
+                    <input type="number" name="salary" required value="{{ employee.salary }}">
+                </div>
+                <div class="form-group">
+                    <label>Fecha de ingreso</label>
+                    <input type="date" name="hire_date" required value="{{ employee.hire_date }}">
+                </div>
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <select name="department_id" required>
+                        <option value="">Seleccioná un departamento</option>
+                        {% for dep in departments %}
+                        <option value="{{ dep.id }}" 
+                            {% if dep.id == employee.department_id %}selected{% endif %}>
+                            {{ dep.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn">Guardar cambios</button>
+            </form>
+        </div>
+    </main>
+
+    {% include 'partials/footer.html' %}
+
+</body>
+</html>
