@@ -3,7 +3,7 @@
 A Human Resources management system with an integrated AI chatbot, built with Python Flask and Claude AI.
 
 ## 🚀 Live Demo
-> Coming soon (deploy in progress)
+👉 [https://hr-assistant-a912.onrender.com](https://hr-assistant-a912.onrender.com)
 
 ## ✨ Features
 
